@@ -1,0 +1,28 @@
+@startuml Eventbrite
+
+Class User{
+  email: string
+  encrypted_pasword: string
+  description: text
+  first_name: string
+  last_name: string
+}
+
+Class Event{
+  start_date: datetime
+  duration: integer
+  title: string
+  description: text
+  price: integer
+  location: string
+}
+
+Class Attendance{
+  stripe_customer_id:string
+}
+
+' User "*" - "*" Event : a plusieurs
+User "1" - "*" Attendance : a plusieur
+Event "1" -- "*" Attendance : a plusieur
+
+@enduml

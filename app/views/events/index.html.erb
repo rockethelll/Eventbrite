@@ -1,0 +1,15 @@
+<div class="row justify-content-center">
+  <% @events.each do |event| %>
+    <div class="d-flex justify-content-center col-md-4 col-sm-6 my-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Titre: <%= event.title %></h5>
+          <% date = event.start_date %>
+          <p class="card-text">Date: <%= date.strftime("%d-%m-%Y à %H:%M") %></p>
+          <p class="card-text">Description: <%= event.description %></p>
+          <p class="card-text">Location: <%= event.location %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

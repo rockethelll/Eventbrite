@@ -80,3 +80,5 @@ gem "mail_form", "~> 1.10"
 gem "devise", "~> 4.9"
 
 gem "faker", "~> 3.1"
+
+gem "table_print", "~> 1.5"

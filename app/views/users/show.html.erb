@@ -1,0 +1,38 @@
+<h1 class="text-center mt-4">Informations de l'utilisateur</h1>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center my-5">
+        <%= @user.first_name %> <%= @user.last_name.upcase %>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <p>
+        <strong>Ses hobbies :</strong> <%= @user.description %>
+      </p>
+      <p>
+        <strong>Pour le joindre :</strong> <%= @user.email %>
+      </p>
+      <% if @event_ids.length == 0 %>
+        <p>Vous n'avez créé auncun événement</p>
+
+      <% elsif @event_ids.length == 1 %>
+        <p>Vous avez crée un événement : </p>
+        <p><%= Event.find(@event_ids[0]).title %></p>
+
+      <% else %>
+        <% @event_ids.each do |id| %>
+        <p>
+          <strong>Événements que tu as crée :</strong> <%= Event.find(id).title %>
+        </p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

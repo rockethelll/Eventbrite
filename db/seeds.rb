@@ -8,6 +8,10 @@
 
 User.destroy_all
 Event.destroy_all
+Attendance.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('attendances')
+ActiveRecord::Base.connection.reset_pk_sequence!('events')
 
 10.times do
   User.create!(
@@ -29,3 +33,7 @@ end
     location: Faker::Address.city
   )
 end
+
+Attendance.create(event_id: 1, user_id: 1, stripe_customer_id: "123123")
+Attendance.create(event_id: 2, user_id: 1, stripe_customer_id: "456456")
+Attendance.create(event_id: 3, user_id: 1, stripe_customer_id: "789789")

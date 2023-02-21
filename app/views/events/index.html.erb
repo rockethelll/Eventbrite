@@ -1,15 +1,21 @@
-<div class="row justify-content-center">
+<h1 class="text-center my-4">Découvrez les événements du moment</h1>
+<div class="row justify-content-around">
   <% @events.each do |event| %>
-    <div class="d-flex justify-content-center col-md-4 col-sm-6 my-4">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Titre: <%= event.title %></h5>
-          <% date = event.start_date %>
-          <p class="card-text">Date: <%= date.strftime("%d-%m-%Y à %H:%M") %></p>
-          <p class="card-text">Description: <%= event.description %></p>
-          <p class="card-text">Location: <%= event.location %></p>
+    <div class="d-flex justify-content-center col-md-3 col-sm-6 my-4">
+      <div class="shadow-lg px-2 py-2" style="width: 18rem;">
+      <h2><%= event.title %></h2>
+        <% date = event.start_date %>
+        <p class="my-3"><strong>Date</strong>: <%= date.strftime("%d-%m-%Y") %></p>
+        <p class=""><strong>Description</strong>: <%= event.description %></p>
+        <p class=""><strong>Lieu</strong>: <%= event.location %></p>
+        <p class=""><strong>Prix</strong>: <%= event.price %> €</p>
+        <p class=""><strong>Duration</strong>: <%= event.duration %> minutes</p>
+        <div class="text-center">
+        <%= button_to "Voir plus »", root_path ,class:"btn btn-sm btn-success disabled"%>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
+

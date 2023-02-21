@@ -27,11 +27,11 @@
        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+            Profil
           </a>
           <% if current_user %>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Mon profil</a></li>
+              <li><a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon profil</a></li>
               <li><a class="dropdown-item" href="<%= destroy_user_session_path %>">Se déconnecter</a></li>
             </ul>
           <% else %>

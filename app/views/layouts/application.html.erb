@@ -32,7 +32,7 @@
           <% if current_user %>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Mon profil</a></li>
-              <li><a class="dropdown-item" href="#">Se déconnecter</a></li>
+              <li><a class="dropdown-item" href="<%= destroy_user_session_path %>">Se déconnecter</a></li>
             </ul>
           <% else %>
             <ul class="dropdown-menu">

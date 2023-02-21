@@ -74,3 +74,7 @@ group :test do
 end
 
 gem "mailjet", "~> 1.7"
+
+gem "mail_form", "~> 1.10"
+
+gem "devise", "~> 4.9"

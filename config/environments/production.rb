@@ -89,6 +89,7 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
+  # config.action_mailer.delivery_method = :mailjet
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.delivery_method = :mailjet
+  config.action_mailer.default_url_options = { :host => 'my-eventbrite.herokuapp.com' }
 end

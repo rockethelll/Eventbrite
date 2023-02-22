@@ -1,1 +1,34 @@
-wfdgsdfgsdfgsdf
+<div class="container-fluid text-center">
+  <h1>Création d'un événement</h1>
+  <%= form_with scope: :event, url: new_event_path do |form| %>
+  <div class="mb-3">
+    <%= form.label "date de l'événement" %>
+    <%= form.text_field :start_date, class:'w-25' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label 'Durée' %>
+    <%= form.text_field :duration, class:'w-25' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label 'Titre' %>
+    <%= form.text_field :title, class:'w-25' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label 'Description' %>
+    <%= form.text_area :description, cols: 50, rows: 5 %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label 'Prix' %>
+    <%= form.text_field :price, class:'w-25' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label 'Lieu' %>
+    <%= form.text_field :location, class:'w-25' %>
+  </div>
+  <% end %>
+</div>

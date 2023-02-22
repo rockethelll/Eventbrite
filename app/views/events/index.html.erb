@@ -1,6 +1,6 @@
 <h1 class="text-center my-4">Découvrez les événements du moment</h1>
 <div class="row justify-content-around">
-  <% @events.each do |event| %>
+  <% @event.each do |event| %>
     <div class="d-flex justify-content-center col-md-3 col-sm-6 my-4">
       <div class="shadow-lg px-2 py-2" style="width: 18rem;">
       <h2><%= event.title %></h2>
@@ -11,7 +11,7 @@
         <p class=""><strong>Prix</strong>: <%= event.price %> €</p>
         <p class=""><strong>Duration</strong>: <%= event.duration %> minutes</p>
         <div class="text-center">
-        <%= button_to "Voir plus »", root_path ,class:"btn btn-sm btn-success disabled"%>
+        <a href="<%= event_path(event.id)%>" class="btn btn-sm btn-success">Voir plus »</a>
         </div>
       </div>
     </div>

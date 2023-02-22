@@ -82,3 +82,5 @@ gem "devise", "~> 4.9"
 gem "faker", "~> 3.1"
 
 gem "table_print", "~> 1.5"
+
+gem "stripe", "~> 8.3"

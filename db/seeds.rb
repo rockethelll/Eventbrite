@@ -22,6 +22,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('events')
     password: 123456
   )
 end
+puts 'Users create DONE !'
 
 20.times do
   Event.create!(
@@ -29,11 +30,16 @@ end
     duration: 120,
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph,
-    price: rand(5..50),
-    location: Faker::Address.city
+    price: rand(5..200),
+    location: Faker::Address.city,
+    admin_id: rand(1..10)
   )
 end
+puts 'Events create DONE !'
 
-Attendance.create(event_id: 1, user_id: 1, stripe_customer_id: "123123")
-Attendance.create(event_id: 2, user_id: 1, stripe_customer_id: "456456")
-Attendance.create(event_id: 3, user_id: 1, stripe_customer_id: "789789")
+Attendance.create(event_id: 1, guest_id: 1, stripe_customer_id: "123123")
+Attendance.create(event_id: 2, guest_id: 1, stripe_customer_id: "456456")
+Attendance.create(event_id: 3, guest_id: 1, stripe_customer_id: "789789")
+puts 'Attendances create DONE !'
+
+puts 'Seeds OK'

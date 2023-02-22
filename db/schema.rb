@@ -16,12 +16,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_093240) do
 
   create_table "attendances", force: :cascade do |t|
     t.string "stripe_customer_id"
-    t.bigint "user_id"
+    t.bigint "guest_id"
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attendances_on_event_id"
-    t.index ["user_id"], name: "index_attendances_on_user_id"
+    t.index ["guest_id"], name: "index_attendances_on_guest_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -31,8 +31,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_093240) do
     t.text "description"
     t.integer "price"
     t.string "location"
+    t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_events_on_admin_id"
   end
 
   create_table "users", force: :cascade do |t|

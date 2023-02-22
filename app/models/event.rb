@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
+  belongs_to :admin, class_name: 'User'
   has_many :attendances
-  has_many :users, through: :attendances
+  has_many :guests, class_name: 'User', through: :attendances
   validates :start_date, presence: true, comparison: { greater_than: DateTime.now }
   validates :duration, presence: true, numericality: { divisible_by: 5, greater_than: 0 }
   validates :title, presence: true, length: 5..140

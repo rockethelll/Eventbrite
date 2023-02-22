@@ -31,7 +31,7 @@ puts 'Users create DONE !'
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph,
     price: rand(5..200),
-    location: Faker::Address.city,
+    location: Faker::Address.city.upcase,
     admin_id: rand(1..10)
   )
 end

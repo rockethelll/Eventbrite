@@ -1,14 +1,20 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
 <div class="container-fluid text-center">
   <h1>Création d'un événement</h1>
-  <%= form_with scope: :event, url: new_event_path do |form| %>
+  <%= form_with model: @event do |form| %>
   <div class="mb-3">
-    <%= form.label "date de l'événement" %>
-    <%= form.text_field :start_date, class:'w-25' %>
+    <%= form.label "date de l'événement", class:'form-label' %>
+    <%= form.date_field :start_date, class:'w-25 ' %>
   </div>
 
   <div class="mb-3">
     <%= form.label 'Durée' %>
-    <%= form.text_field :duration, class:'w-25' %>
+    <%= form.number_field :duration, class:'w-25' %>
   </div>
 
   <div class="mb-3">
@@ -30,5 +36,8 @@
     <%= form.label 'Lieu' %>
     <%= form.text_field :location, class:'w-25' %>
   </div>
+
+  <%= submit_tag "Créer l'événement", class:'btn btn-sm btn-success' %>
   <% end %>
 </div>
+

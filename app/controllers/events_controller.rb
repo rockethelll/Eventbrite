@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @admin_id = current_user.id
   end
 
   def show
@@ -12,14 +13,22 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    if @event.save
-      flash[:notice] = 'Potin sauvegardé'
-      redirect_to event_path(@event.id)
+    puts '-' * 60
+    event = Event.new(event_params)
+    event.update(admin_id: current_user.id)
+    if event.save!
+      flash[:success] = 'Événement crée'
+      redirect_to event_path(event)
     else
-      flash[:alert] = 'Erreur : impossible de sauvegarder le potin'
+      flash[:error] = 'Erreur : impossible de sauvegarder l"événement'
       render :new
     end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_path
   end
 
   private

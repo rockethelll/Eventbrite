@@ -10,11 +10,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @user = User.all
   end
 
   def create
-    puts '-' * 60
     event = Event.new(event_params)
+    event.picture.attach(params[:picture])
     event.update(admin_id: current_user.id)
     if event.save!
       flash[:success] = 'Événement crée'
@@ -23,6 +24,16 @@ class EventsController < ApplicationController
       flash[:error] = 'Erreur : impossible de sauvegarder l"événement'
       render :new
     end
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to event_path(@event)
   end
 
   def destroy
@@ -34,6 +45,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location)
+    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :picture)
   end
 end

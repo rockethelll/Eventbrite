@@ -6,15 +6,16 @@
 
 <div class="container-fluid text-center">
   <h1>Création d'un événement</h1>
-  <%= form_with model: @event do |form| %>
+  <%= form_with model: @event, multipart: true do |form| %>
+  
   <div class="mb-3">
     <%= form.label "date de l'événement", class:'form-label' %>
-    <%= form.date_field :start_date, class:'w-25 ' %>
+    <%= form.date_field :start_date, autofocus: true, class:'w-25 ' %>
   </div>
 
   <div class="mb-3">
     <%= form.label 'Durée' %>
-    <%= form.number_field :duration, class:'w-25' %>
+    <%= form.number_field :duration, class:'w-25', min: 5, step: 5 %>
   </div>
 
   <div class="mb-3">
@@ -35,9 +36,13 @@
   <div class="mb-3">
     <%= form.label 'Lieu' %>
     <%= form.text_field :location, class:'w-25' %>
-  </div>
+  </div> 
 
-  <%= submit_tag "Créer l'événement", class:'btn btn-sm btn-success' %>
+
+  <h3 class='my-3'>Ajouter une photo</h3>
+  <%= file_field_tag :picture %>
+
+  <%= submit_tag "Créer l'événement", class:'btn btn-sm btn-success mt-2' %>
   <% end %>
 </div>
 

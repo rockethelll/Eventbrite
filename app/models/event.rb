@@ -8,4 +8,5 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: 20..10000
   validates :price, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 10000 }
   validates :location, presence: true
+  has_one_attached :picture
 end

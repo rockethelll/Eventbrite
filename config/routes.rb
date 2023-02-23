@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :events
   resources :users, only: [:new, :show, :edit, :update]
+  resources :attendances
   get 'static_pages/secret'
 
   scope '/checkout' do

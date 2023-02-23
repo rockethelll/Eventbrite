@@ -5,7 +5,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @event_ids = Attendance.where(user_id: 1).pluck(:event_id)
+    
+    puts '-' * 60
+    p params
+    p current_user
+    puts '-' * 60
+    @event_ids = Attendance.where(guest_id: 1).pluck(:event_id)
   end
 
   def update
